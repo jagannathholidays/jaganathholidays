@@ -4,10 +4,10 @@ import { FiCheckCircle } from 'react-icons/fi';
 
 /* ── Data ── */
 const defaultPoints = [
-  "Expert Guides with Local Knowledge",
-  "Handpicked Premium Accommodations",
-  "Tailored Itineraries for Every Need",
-  "24/7 Dedicated Customer Support"
+  "Tailored Tour Packages for Every Requirement",
+  "Licensed Guides with Rich Cultural Knowledge",
+  "Transparent Quotes with No Hidden Charges",
+  "24/7 Dedicated Support & Local Coordination"
 ];
 
 /* ── Sub-components ── */
@@ -17,7 +17,7 @@ function StoryImages() {
       <div className={styles.imageWrapperMain}>
         <Image 
           src="/loved-destination-1.png" 
-          alt="Beautiful Destination" 
+          alt="Jagannath Holidays Tour Experience" 
           width={500} 
           height={600} 
           className={styles.mainImage}
@@ -26,15 +26,15 @@ function StoryImages() {
       <div className={styles.imageWrapperSub}>
         <Image 
           src="/loved-destination-2.png" 
-          alt="Cultural Experience" 
+          alt="Odisha Cultural Heritage" 
           width={300} 
           height={300} 
           className={styles.subImage}
         />
       </div>
       <div className={styles.experienceBadge}>
-        <span className={styles.badgeNumber}>15+</span>
-        <span className={styles.badgeText}>Years of Experience</span>
+        <span className={styles.badgeNumber}>7+</span>
+        <span className={styles.badgeText}>Years of Trust & Service</span>
       </div>
     </div>
   );
@@ -57,14 +57,18 @@ function StoryContent({ points }) {
   return (
     <div className={styles.textColumn}>
       <h4 className={styles.subtitle}>Our Story</h4>
-      <h2 className={styles.title}>Creating Unforgettable Memories Since 2011</h2>
+      <h2 className={styles.title}>More Than Just a Holiday Experience</h2>
       
       <p className={styles.description}>
-        Welcome to Jagannath Holidays, your premier gateway to the enchanting landscapes and rich cultural heritage of India and beyond. What started as a small passion project to showcase the hidden gems of Odisha has blossomed into a full-scale travel agency dedicated to curating life-changing journeys.
+        A trip at Jagannath Holidays is more than just a holiday experience; it's an opportunity to unwind, recharge, and let go of the daily grind. Planning a holiday could sometimes be stressful—we know all too well how to make it easy, smooth, and fun at all stages.
       </p>
       
       <p className={styles.description}>
-        We believe that travel is not just about visiting new places, but about the experiences that shape our worldview. Whether you are looking for a serene honeymoon getaway, an adventurous wildlife safari, or a deeply spiritual pilgrimage, our dedicated team works tirelessly to ensure every detail of your trip is flawless.
+        Our tour packages are well-designed, our tours are tailored according to your requirement, and we are available for reliable bookings at good rates. Whether you travel by yourself, with family, or with friends, we have you covered and make your trip comfortable and unforgettable.
+      </p>
+      
+      <p className={styles.description}>
+        From the outset, the emphasis has been placed on trust and professionalism. As a family-owned and operated business in Bhubaneswar with our branch in Puri offering local coordination and on-the-ground support, we provide tailor-made travel solutions with personalized care to make sure your travel has fantastic moments and memorable experiences.
       </p>
       
       <StoryFeatures points={points} />
@@ -83,3 +87,4 @@ export default function AboutStory() {
     </section>
   );
 }
+

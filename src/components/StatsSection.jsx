@@ -5,7 +5,7 @@ import { FiUsers, FiMap, FiAward, FiSmile } from 'react-icons/fi';
 const statsData = [
   { icon: <FiUsers className={styles.icon} />, number: "25k+", label: "Happy Travelers" },
   { icon: <FiMap className={styles.icon} />, number: "100+", label: "Tour Destinations" },
-  { icon: <FiAward className={styles.icon} />, number: "15+", label: "Years Experience" },
+  { icon: <FiAward className={styles.icon} />, number: "7+", label: "Years Experience" },
   { icon: <FiSmile className={styles.icon} />, number: "10k+", label: "Positive Reviews" }
 ];
 

@@ -362,3 +362,39 @@ export async function getDestinationsTaxonomy() {
   }
   return [];
 }
+
+/**
+ * Fetches customer reviews from CMS API
+ */
+export async function getReviewsList() {
+  try {
+    const res = await fetch(`${CMS_API_URL}/api/v1/delivery/contents/show`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${CMS_TOKEN}`,
+      },
+      body: JSON.stringify({
+        slug: "reviews",
+        content_type: "reviews",
+      }),
+      next: { revalidate: 30 },
+    });
+
+    const result = await res.json();
+    const reviews = result?.data?.data?.reviews;
+
+    if (Array.isArray(reviews) && reviews.length > 0) {
+      return reviews.map((item, index) => ({
+        id: index,
+        name: item.name || 'Customer',
+        rating: item.rating || 5,
+        text: item.content || '',
+      }));
+    }
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
+  }
+  return [];
+}
+

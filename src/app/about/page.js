@@ -2,10 +2,11 @@ import BreadcrumbBanner from '@/components/BreadcrumbBanner';
 import AboutStory from '@/components/AboutStory';
 import VisionMissionSection from '@/components/VisionMissionSection';
 import WhyChooseUs from '@/components/WhyChooseUs';
+import StatsSection from '@/components/StatsSection';
 import LovedDestinations from '@/components/LovedDestinations';
 import TestimonialsSection from '@/components/TestimonialsSection';
-import StatsSection from '@/components/StatsSection';
-import { getDestinationsTaxonomy } from '@/lib/api';
+import FaqSection from '@/components/FaqSection';
+import { getDestinationsTaxonomy, getReviewsList } from '@/lib/api';
 
 export default async function AboutPage() {
   const breadcrumbs = [
@@ -13,7 +14,10 @@ export default async function AboutPage() {
     { label: 'About Us' }
   ];
 
-  const destinationsData = await getDestinationsTaxonomy();
+  const [destinationsData, reviewsData] = await Promise.all([
+    getDestinationsTaxonomy(),
+    getReviewsList(),
+  ]);
 
   return (
     <main>
@@ -26,9 +30,10 @@ export default async function AboutPage() {
       <AboutStory />
       <VisionMissionSection />
       <WhyChooseUs />
-       <StatsSection />
+      <StatsSection />
       <LovedDestinations destinations={destinationsData} />
-      <TestimonialsSection />
+      <TestimonialsSection reviewsData={reviewsData} />
+      <FaqSection />
     </main>
   );
 }

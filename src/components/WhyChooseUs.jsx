@@ -1,27 +1,27 @@
-import { FiMap, FiAward, FiShield, FiHeart } from 'react-icons/fi';
+import { FiAward, FiCompass, FiTruck, FiHeart } from 'react-icons/fi';
 import styles from './WhyChooseUs.module.css';
 
 /* ── Data ── */
 const reasonsData = [
   {
-    icon: <FiMap className={styles.icon} />,
-    title: "Extensive Destinations",
-    description: "From hidden coastal gems to the most revered spiritual sites, our curated destinations cover every aspect of your travel desires."
-  },
-  {
     icon: <FiAward className={styles.icon} />,
-    title: "Award-Winning Service",
-    description: "Recognized by industry leaders for our unwavering commitment to providing the ultimate travel experience."
+    title: "7+ Years Industry Experience",
+    description: "Combining global service standards with regional expertise, officially recognized & approved by major authorities including IATA, OTOAI, and ATOAI."
   },
   {
-    icon: <FiShield className={styles.icon} />,
-    title: "Safe & Secure Booking",
-    description: "Your peace of mind is our priority. Enjoy secure transactions, flexible cancellations, and guaranteed safety during your trip."
+    icon: <FiCompass className={styles.icon} />,
+    title: "Certified & Knowledgeable Guides",
+    description: "All our guides are licensed and certified, possessing deep knowledge about regional culture, temple folklore, history, and hidden gems."
+  },
+  {
+    icon: <FiTruck className={styles.icon} />,
+    title: "Airport & Railway Pickup Facility",
+    description: "Our tour packages include seamless pick-up and drop-off facilities. We handle all transportation needs with private AC vehicles so you can travel comfortably."
   },
   {
     icon: <FiHeart className={styles.icon} />,
-    title: "Passionate Local Guides",
-    description: "Our guides don't just show you places; they share the stories, history, and soul of the destinations you visit."
+    title: "Family & Tailor-Made Pacing",
+    description: "Tailored to your plans and budget with flexible pacing, child-friendly hotels, and guided support for temple visits so every traveler stays comfortable."
   }
 ];
 
@@ -29,10 +29,10 @@ const reasonsData = [
 function WhyChooseUsHeader() {
   return (
     <div className={styles.header}>
-      <h4 className={styles.subtitle}>Why Choose Us</h4>
+      <h4 className={styles.subtitle}>Why Choose Jagannath Holidays</h4>
       <h2 className={styles.title}>Your Journey, Our Commitment</h2>
       <p className={styles.description}>
-        We go above and beyond to ensure that every moment of your vacation is seamless, memorable, and extraordinary.
+        We go above and beyond to make sure your travel is easy, smooth, and fun at all stages with transparent quotes and zero hidden charges.
       </p>
     </div>
   );
@@ -71,3 +71,4 @@ export default function WhyChooseUs() {
     </section>
   );
 }
+

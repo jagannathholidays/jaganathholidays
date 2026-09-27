@@ -16,18 +16,14 @@ function AboutText() {
   return (
     <>
       <p className={styles.paragraph}>
-        Jagannath Holidays believes that a refreshing getaway is the perfect way to escape the
-        demands of everyday life. Planning a trip can often feel overwhelming, but our experienced
-        team is here to make your journey seamless, comfortable, and unforgettable. With carefully
-        crafted tour packages, personalized itineraries, reliable reservation services, and
-        competitive pricing, we cater to travelers from across the globe who wish to explore the
-        beauty and culture of Odisha.
+        A trip at Jagannath Holidays is more than just a holiday experience; It's an opportunity to unwind, recharge, and let go of the daily grind. Planning a holiday could sometimes be stressful, we know all too well how to make it easy, smooth and fun at all stages.
       </p>
       <p className={styles.paragraph}>
-        Since our establishment, Jagannath Holidays has been dedicated to providing reliable
-        and professional travel services to travelers across India and around the world. Based in
-        Bhubaneswar, Odisha, we specialize in delivering a wide range of B2B and B2C travel
-        solutions, offering personalized assistance and exceptional customer support.
+Our tour packages are well-designed, our tours are tailored according to your requirement and we are available for reliable bookings at good rates. Travel by yourself, with family or friends, we have you covered and make your trip comfortable and unforgettable.
+
+      </p>
+      <p className={styles.paragraph}>
+From the outset, the emphasis has been placed on trust and to be professional.  After all we are a family-owned and operated business in Bhubaneswar. We can offer you tailor-made travel solutions with personalized support to make sure your travel has fantastic moments and memorable experiences.
       </p>
     </>
   );
