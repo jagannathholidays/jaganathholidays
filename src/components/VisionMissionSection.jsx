@@ -6,12 +6,12 @@ const vmData = [
   {
     icon: <FiEye className={styles.icon} />,
     title: "Our Vision",
-    description: "To be the most trusted and innovative travel companion, inspiring people to explore the world deeply, connect across cultures, and create lifelong memories while preserving the beauty of our planet for future generations."
+    description: "To become an innovative and trusted travel partner, helping people see the world and the diverse cultures in a different way. We always try our best to preserve the cultural and natural value of places we travel to for future generations. "
   },
   {
     icon: <FiTarget className={styles.icon} />,
     title: "Our Mission",
-    description: "To curate exceptional, personalized travel experiences that exceed our clients' expectations. We strive to provide unparalleled service, expert guidance, and seamless journeys, all while promoting responsible and sustainable tourism practices."
+    description: "To offer personalised as well as exceptional experiences that will go beyond the expectations of our clients. We are committed to offering premium services and well-planned itineraries, while following sustainable and ethical practices. "
   }
 ];
 

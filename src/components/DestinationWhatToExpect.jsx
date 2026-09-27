@@ -20,17 +20,19 @@ function ExpectationHeader() {
 }
 
 function ExpectationCard({ text }) {
+  const displayText = typeof text === 'string' ? text : (text?.title || text?.text || text?.name || '');
   return (
     <div className={styles.expectationCard}>
       <FiCheck className={styles.checkIcon} />
-      <span className={styles.text}>{text}</span>
+      <span className={styles.text}>{displayText}</span>
     </div>
   );
 }
 
 /* ── Main Component ── */
-export default function DestinationWhatToExpect({ list = defaultExpectations }) {
-  const items = Array.isArray(list) && list.length > 0 ? list : defaultExpectations;
+export default function DestinationWhatToExpect({ list, whatToExpect }) {
+  const rawList = whatToExpect !== undefined ? whatToExpect : list;
+  const items = Array.isArray(rawList) && rawList.length > 0 ? rawList : defaultExpectations;
 
   return (
     <section id="what-to-expect" className={styles.whatToExpectSection}>
@@ -38,8 +40,8 @@ export default function DestinationWhatToExpect({ list = defaultExpectations }) 
         <ExpectationHeader />
         
         <div className={styles.grid}>
-          {items.map((text, index) => (
-            <ExpectationCard key={index} text={typeof text === 'string' ? text : text?.title || text?.text || JSON.stringify(text)} />
+          {items.map((item, index) => (
+            <ExpectationCard key={index} text={item} />
           ))}
         </div>
       </div>

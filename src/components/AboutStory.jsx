@@ -4,10 +4,10 @@ import { FiCheckCircle } from 'react-icons/fi';
 
 /* ── Data ── */
 const defaultPoints = [
-  "Tailored Tour Packages for Every Requirement",
-  "Licensed Guides with Rich Cultural Knowledge",
-  "Transparent Quotes with No Hidden Charges",
-  "24/7 Dedicated Support & Local Coordination"
+  "Professional and Knowledgeable Guides",
+  "Premium Accommodations with Facilities",
+  "Customised Packages for All",
+  "24x7 Customer Support"
 ];
 
 /* ── Sub-components ── */
@@ -57,19 +57,16 @@ function StoryContent({ points }) {
   return (
     <div className={styles.textColumn}>
       <h4 className={styles.subtitle}>Our Story</h4>
-      <h2 className={styles.title}>More Than Just a Holiday Experience</h2>
+      <h2 className={styles.title}>Crafting Beautiful Memories Since 2020</h2>
       
       <p className={styles.description}>
-        A trip at Jagannath Holidays is more than just a holiday experience; it's an opportunity to unwind, recharge, and let go of the daily grind. Planning a holiday could sometimes be stressful—we know all too well how to make it easy, smooth, and fun at all stages.
-      </p>
+        Welcome to Jagannath Holidays.  We are the people who always serve you the extraordinary sights of beautiful landscapes and the extraordinary cultural heritages of Odisha and beyond. Located in the capital city of Odisha, we are a family-owned and operated travel agency. Choose us and make your simple trip an extraordinary adventure. </p>
       
       <p className={styles.description}>
-        Our tour packages are well-designed, our tours are tailored according to your requirement, and we are available for reliable bookings at good rates. Whether you travel by yourself, with family, or with friends, we have you covered and make your trip comfortable and unforgettable.
-      </p>
+       We at Jagannath Holidays feel that travelling is not merely a matter of ticking off places and ticking off the next location, it is about living in the story of places, enjoying the authentic cultures and making life-long memories! We have a broad knowledge of the local area, hand select our properties and offer customer support 24/7, ensuring stress-free travel. </p>
       
       <p className={styles.description}>
-        From the outset, the emphasis has been placed on trust and professionalism. As a family-owned and operated business in Bhubaneswar with our branch in Puri offering local coordination and on-the-ground support, we provide tailor-made travel solutions with personalized care to make sure your travel has fantastic moments and memorable experiences.
-      </p>
+      We will take care of all the planning for you and you just concentrate on the experience. Experience the essence of traveling with Jagannath Holidays.</p>
       
       <StoryFeatures points={points} />
     </div>

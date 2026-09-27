@@ -5,23 +5,23 @@ import styles from './WhyChooseUs.module.css';
 const reasonsData = [
   {
     icon: <FiAward className={styles.icon} />,
-    title: "7+ Years Industry Experience",
-    description: "Combining global service standards with regional expertise, officially recognized & approved by major authorities including IATA, OTOAI, and ATOAI."
+    title: "Packages for All",
+    description: "Expertly curated itineraries to ensure every traveler experiences top destination, hidden gems, and cultural highlights comfortably."
   },
   {
     icon: <FiCompass className={styles.icon} />,
-    title: "Certified & Knowledgeable Guides",
-    description: "All our guides are licensed and certified, possessing deep knowledge about regional culture, temple folklore, history, and hidden gems."
+    title: "Reliable Customer Support",
+    description: "Get quick assistance from our team during emergencies, or unexpected changes, ensuring peace of mind."
   },
   {
     icon: <FiTruck className={styles.icon} />,
-    title: "Airport & Railway Pickup Facility",
-    description: "Our tour packages include seamless pick-up and drop-off facilities. We handle all transportation needs with private AC vehicles so you can travel comfortably."
+    title: "Professional Guide",
+    description: "Our guides are highly trained and knowledgeable. Don’t just see the places, learn every detail about them."
   },
   {
     icon: <FiHeart className={styles.icon} />,
-    title: "Family & Tailor-Made Pacing",
-    description: "Tailored to your plans and budget with flexible pacing, child-friendly hotels, and guided support for temple visits so every traveler stays comfortable."
+    title: "Secure Booking",
+    description: "We guarantee secure transactions and ensure your maximum safety during your journey."
   }
 ];
 
@@ -30,10 +30,9 @@ function WhyChooseUsHeader() {
   return (
     <div className={styles.header}>
       <h4 className={styles.subtitle}>Why Choose Jagannath Holidays</h4>
-      <h2 className={styles.title}>Your Journey, Our Commitment</h2>
+      <h2 className={styles.title}>Your Dreams, Our Dedication</h2>
       <p className={styles.description}>
-        We go above and beyond to make sure your travel is easy, smooth, and fun at all stages with transparent quotes and zero hidden charges.
-      </p>
+        We always go the extra mile to make sure you are enjoying a perfect vacation with your loved ones. Let’s make your journey memorable.</p>
     </div>
   );
 }

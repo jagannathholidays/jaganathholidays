@@ -109,6 +109,7 @@ export default async function PackageDetailsPage({ params }) {
   const termCondition = details.term_condition || [];
   const tourGallery = details.tour_gallery || [];
   const description = details.description || '';
+  const whatToExpect = details.what_to_expect || packageItem.what_to_expect || [];
 
   // Filter out current package from related packages
   const relatedTours = (allPackages || []).filter(p => p.slug !== slug).slice(0, 3);
@@ -200,7 +201,7 @@ export default async function PackageDetailsPage({ params }) {
         packageTitle={title}
       />
 
-      <DestinationWhatToExpect />
+      <DestinationWhatToExpect whatToExpect={whatToExpect} />
 
       <DestinationGallery gallery={tourGallery} title={`${title} Gallery`} />
 
