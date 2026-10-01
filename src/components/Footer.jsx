@@ -55,9 +55,10 @@ const tourPackagesColumn2 = [
 const bottomLinks = [
   { label: 'About Us', href: '/about' },
   { label: 'Contact Us', href: '/contact' },
-  { label: 'Privacy Policy', href: '#' },
-  { label: 'Terms & Conditions', href: '#' },
-  { label: 'Reservation Policy', href: '#' }
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms & Conditions', href: '/terms-and-conditions' },
+  { label: 'Reservation Policy', href: '/reservation-policy' },
+  { label: 'Cancellation Policy', href: '/cancellation-policy' }
 ];
 
 /* ── Sub-components ── */
