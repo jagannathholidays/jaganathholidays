@@ -141,7 +141,7 @@ export default async function PackageDetailsPage({ params }) {
           '@type': 'TravelAgency',
           'name': 'Jagannath Holidays',
           'url': siteUrl,
-          'telephone': '+91 1234567890'
+          'telephone': '+91 9583837770'
         }
       },
       {

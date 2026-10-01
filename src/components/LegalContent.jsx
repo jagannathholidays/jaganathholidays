@@ -71,7 +71,7 @@ export default function LegalContent({ content, contactTitle = 'Questions About 
           <p className={styles.contactText}>
             <strong>Jagannath Holidays</strong>
             <br />
-            Rasulgarh, Bhubaneswar, 751010, Odisha, India
+            Rasulgarh, Bhubaneswar, 751025, Odisha, India
             <br />
             Email:{' '}
             <a href="mailto:info@jagannathholidays.com" className={styles.contactLink}>
@@ -79,8 +79,8 @@ export default function LegalContent({ content, contactTitle = 'Questions About 
             </a>
             <br />
             Phone:{' '}
-            <a href="tel:+911234567890" className={styles.contactLink}>
-              +91 1234567890
+            <a href="tel:+919583837770" className={styles.contactLink}>
+              +91 9583837770
             </a>
           </p>
           <p className={styles.contactText}>

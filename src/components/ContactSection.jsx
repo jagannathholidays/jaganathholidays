@@ -37,10 +37,10 @@ function ContactInfoBanner() {
         <div className={styles.heroContent}>
           <span className={styles.tagline}>Get in touch with our experts</span>
           <h2 className={styles.mainTitle}>
-            Let&apos;s Plan Your Unforgettable Journey Together
+            Plan Your Dream Trip with Jagannath Holidays Tours
           </h2>
           <p className={styles.description}>
-            Are you ready to explore Odisha? Our local travel experts are here to design the perfect journey for you.
+            Jagannath Holidays Tours will create a perfectly customised itinerary that will fit your interests while making  your trip truly unforgettable.
           </p>
 
           <div className={styles.quickActions}>
@@ -60,7 +60,7 @@ function ContactInfoBanner() {
           <div className={styles.featureList}>
             <div className={styles.featureItem}>
               <span className={styles.featureBullet}>✓</span>
-              <span>Instant Response &amp; Custom Quote within 2 Hours</span>
+              <span>Quick Response &amp; Custom Quote within 2 Hours</span>
             </div>
             <div className={styles.featureItem}>
               <span className={styles.featureBullet}>✓</span>

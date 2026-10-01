@@ -74,12 +74,12 @@ function FooterBrand() {
           <FaMapMarkerAlt className={styles.contactIcon} />
           <div className={styles.contactText}>
             <strong>Jagannath Holidays</strong><br />
-            Rasulgarh, Bhubaneswar, 751010, Odisha, India
+            Rasulgarh, Bhubaneswar, 751025, Odisha, India
           </div>
         </li>
         <li>
           <FaPhoneAlt className={styles.contactIcon} />
-          <a href="tel:+911234567890" className={styles.contactLink}>+91 1234567890</a>
+          <a href="tel:+919583837770" className={styles.contactLink}>+91 9583837770</a>
         </li>
         <li>
           <FaEnvelope className={styles.contactIcon} />

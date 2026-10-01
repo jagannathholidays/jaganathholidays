@@ -12,22 +12,22 @@ export const siteConfig = {
 
   contact: {
     // Raw phone number used inside `tel:` links (no spaces).
-    phone: '+911234567890',
+    phone: '+919583837770',
     // Human-readable phone number shown on the page.
-    phoneDisplay: '+91 1234567890',
+    phoneDisplay: '+91 9583837770',
     // WhatsApp number for wa.me links (digits only, with country code).
-    whatsapp: '911234567890',
+    whatsapp: '919583837770',
     email: 'info@jagannathholidays.com',
     website: 'https://www.jagannathholidays.com',
     websiteDisplay: 'www.jagannathholidays.com',
     address: {
-      line1: 'Rasulgarh, Bhubaneswar, 751010, Odisha, India',
-      short: 'Rasulgarh, Bhubaneswar, 751010, Odisha, India. Close to NH-16.',
+      line1: 'Rasulgarh, Bhubaneswar, 751025, Odisha, India',
+      short: 'Rasulgarh, Bhubaneswar, 751025, Odisha, India. Close to NH-16.',
       locality: 'Rasulgarh, Bhubaneswar, Odisha',
     },
     hours: {
       days: 'Monday \u2013 Sunday',
-      time: '8:00 AM \u2013 9:00 PM',
+      time: '10:00 AM \u2013 7:00 PM',
       note: 'Emergency 24/7 Helpline available for active travelers',
     },
     mapLink: 'https://maps.google.com/?q=Rasulgarh+Bhubaneswar+Odisha',

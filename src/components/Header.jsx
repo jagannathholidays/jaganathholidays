@@ -34,13 +34,13 @@ export default function Header() {
         <div className={styles.topBarLeft}>
           <div className={styles.topBarItem}>
             <FiMapPin className={styles.topBarIcon} />
-            <span>Rasulgarh, Bhubaneswar, 751010, Odisha, India</span>
+            <span>Rasulgarh, Bhubaneswar, 751025, Odisha, India</span>
           </div>
         </div>
         <div className={styles.topBarRight}>
           <div className={styles.topBarItem}>
             <FiPhone className={styles.topBarIcon} />
-            <a href="tel:+911234567890" className={styles.topBarLink}>+91 1234567890</a>
+            <a href="tel:+919583837770" className={styles.topBarLink}>+91 9583837770</a>
           </div>
           <div className={styles.topBarItem}>
             <FiMail className={styles.topBarIcon} />

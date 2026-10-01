@@ -216,7 +216,7 @@ export default function ContactForm({
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="98765 43210"
+                    placeholder="9583837770"
                     maxLength={15}
                     className={`${styles.input} ${styles.phoneInput} ${errors.phone ? styles.inputError : ''}`}
                     required

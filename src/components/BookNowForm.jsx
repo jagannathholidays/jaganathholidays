@@ -249,7 +249,7 @@ export default function BookNowForm() {
 
               <div className={styles.summaryFooter}>
                 <p className={styles.pricingNote}>
-                  ⚡ <strong>Instant Response:</strong> Our travel expert will call & WhatsApp you with customized pricing options.
+                  ⚡ <strong>Quick Response:</strong> Our travel expert will call & WhatsApp you with customized pricing options.
                 </p>
               </div>
             </div>
@@ -261,8 +261,8 @@ export default function BookNowForm() {
                 <FiPhone className={styles.trustIcon} />
                 <div>
                   <h5>Call Us</h5>
-                  <a href="tel:+911234567890" className={styles.contactLink}>
-                    +91 1234567890
+                  <a href="tel:+919583837770" className={styles.contactLink}>
+                    +91 9583837770
                   </a>
                 </div>
               </div>
@@ -282,12 +282,12 @@ export default function BookNowForm() {
                 <div>
                   <h5>WhatsApp</h5>
                   <a 
-                    href="https://wa.me/911234567890" 
+                    href="https://wa.me/919583837770" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className={styles.contactLink}
                   >
-                    +91 1234567890 (Chat Now)
+                    +91 9583837770 (Chat Now)
                   </a>
                 </div>
               </div>
@@ -297,7 +297,7 @@ export default function BookNowForm() {
                 <div>
                   <h5>Visit Us</h5>
                   <p>
-                    Rasulgarh, Bhubaneswar, 751010, Odisha, India
+                    Rasulgarh, Bhubaneswar, 751025, Odisha, India
                   </p>
                 </div>
               </div>

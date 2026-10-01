@@ -649,7 +649,7 @@ export default async function TourPackagesSection({
             <div className={`${styles.sidebarCard} ${styles.promoCard} ${styles.mobileOnlyPromo}`} style={{ marginTop: '20px' }}>
               <h4 className={styles.promoTitle}>Need Expert Help?</h4>
               <p className={styles.promoText}>Talk to our travel experts to craft a fully customized vacation itinerary just for you.</p>
-              <a href="tel:+919876543210" className={styles.promoPhone}>+91 98765 43210</a>
+              <a href="tel:+919876543210" className={styles.promoPhone}>+91 9583837770</a>
               <a href="mailto:info@jaganathholidays.com" className={styles.promoEmail}>info@jaganathholidays.com</a>
               <a
                 href="https://wa.me/919876543210?text=I'm%20interested%20in%20customizing%20a%20tour%20package."
@@ -741,7 +741,7 @@ export default async function TourPackagesSection({
               <div className={`${styles.sidebarCard} ${styles.promoCard}`}>
                 <h4 className={styles.promoTitle}>Need Expert Help?</h4>
                 <p className={styles.promoText}>Talk to our travel experts to craft a fully customized vacation itinerary just for you.</p>
-                <a href="tel:+919876543210" className={styles.promoPhone}>+91 98765 43210</a>
+                <a href="tel:+919876543210" className={styles.promoPhone}>+91 9583837770</a>
                 <a href="mailto:info@jaganathholidays.com" className={styles.promoEmail}>info@jaganathholidays.com</a>
                 <a
                   href="https://wa.me/919876543210?text=I'm%20interested%20in%20customizing%20a%20tour%20package."

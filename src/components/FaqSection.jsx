@@ -40,7 +40,7 @@ export const fallbackFaqs = [
   {
     id: 7,
     question: "How Can I Get In Touch With Your Customer Support?",
-    answer: "You can always reach out to our 24/7 support team by phone at +91 1234567890 or send us an email at info@jagannathholidays.com."
+    answer: "You can always reach out to our 24/7 support team by phone at +91 9583837770 or send us an email at info@jagannathholidays.com."
   },
   {
     id: 8,
