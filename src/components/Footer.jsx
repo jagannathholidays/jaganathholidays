@@ -113,7 +113,7 @@ function FooterBottom() {
   return (
     <div className={styles.bottomSection}>
       <p className={styles.copyright}>
-        Copyright © 2026, Jagannath Holidays. All rights reserved. Designed by <a href="https://www.sinphonix.com" target="_blank" rel="noopener noreferrer ">Sinphonix Software</a>.
+        Copyright © 2026, Jagannath Holidays. All rights reserved.
       </p>
 
       <div className={styles.bottomLinks}>
