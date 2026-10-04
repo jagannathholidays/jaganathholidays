@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FiChevronLeft, FiChevronRight, FiArrowRight } from 'react-icons/fi';
 import Slider from "react-slick";
@@ -53,51 +54,55 @@ function resolveDestinationImage(dest, index) {
 }
 
 export default function LovedDestinationsSlider({ destinations = [] }) {
+  // Track the real viewport width so we can deterministically decide how many
+  // cards to show per view. This guarantees a single card per view on mobile
+  // without relying on react-slick's responsive breakpoint quirks.
+  const [windowWidth, setWindowWidth] = useState(null);
+
+  useEffect(() => {
+    const updateWidth = () => setWindowWidth(window.innerWidth);
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
   if (!destinations || destinations.length === 0) {
     return null;
   }
 
   const total = destinations.length;
 
+  // Decide how many slides to show based on the real viewport width.
+  // Defaults to desktop (4) until the client has measured the window.
+  const width = windowWidth ?? 1440;
+
+  let slidesPerView = 4;
+  if (width < 768) {
+    slidesPerView = 1; // phones & large phones — one card per view
+  } else if (width < 992) {
+    slidesPerView = 2; // tablets
+  } else if (width < 1200) {
+    slidesPerView = 3; // small desktops
+  }
+
+  // Never show more slides than there are items.
+  slidesPerView = Math.max(1, Math.min(slidesPerView, total));
+
+  const isMobileView = slidesPerView === 1;
+
   const sliderSettings = {
     dots: false,
-    arrows: true,
-    infinite: total > 4,
+    arrows: !isMobileView,
+    infinite: total > slidesPerView,
     speed: 600,
-    slidesToShow: 4,
+    slidesToShow: slidesPerView,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: total > slidesPerView,
     autoplaySpeed: 3500,
     pauseOnHover: true,
+    swipeToSlide: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: total > 3,
-        }
-      },
-      {
-        breakpoint: 840,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: total > 2,
-        }
-      },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: total > 1,
-          arrows: false,
-        }
-      }
-    ]
   };
 
   return (

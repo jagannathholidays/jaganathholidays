@@ -123,43 +123,6 @@
   right: 28px;
 }
 
-/* ── Slick Dots Customization ── */
-.bannerSliderWrapper :global(.slick-dots) {
-  bottom: 145px;
-  z-index: 5;
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-.bannerSliderWrapper :global(.slick-dots li) {
-  margin: 0;
-  width: auto;
-  height: auto;
-}
-
-.bannerSliderWrapper :global(.slick-dots li button) {
-  width: 12px;
-  height: 12px;
-  padding: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.45);
-  transition: all 0.3s ease;
-  border: none;
-}
-
-.bannerSliderWrapper :global(.slick-dots li button:before) {
-  display: none;
-}
-
-.bannerSliderWrapper :global(.slick-dots li.slick-active button) {
-  background: #d87e00;
-  width: 32px;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(216, 126, 0, 0.6);
-}
-
 /* ── Responsive ── */
 @media (max-width: 992px) {
   .title {
@@ -180,7 +143,7 @@
 @media (max-width: 768px) {
   .bannerSlide {
     min-height: 540px;
-    padding: 80px 5% 140px;
+    padding: 80px 5% 100px;
   }
 
   .bannerOverlay {
@@ -204,11 +167,32 @@
     font-size: 14px;
   }
 
+  /* Arrows moved to the top-right corner on mobile */
   .arrowBtn {
-    display: none !important;
+    display: flex !important;
+    top: 2%;
+    transform: none;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
   }
 
-  .bannerSliderWrapper :global(.slick-dots) {
-    bottom: 130px;
+  .arrowBtn:hover {
+    transform: scale(1.06);
+    background: #d87e00;
+  }
+
+  .arrowIcon {
+    font-size: 20px;
+  }
+
+  .prevArrow {
+    left: auto;
+    right: 64px;
+  }
+
+  .nextArrow {
+    right: 16px;
   }
 }

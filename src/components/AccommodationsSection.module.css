@@ -36,8 +36,15 @@
 /* ── Slider Wrapper & Slick Overrides ── */
 .sliderWrapper {
   position: relative;
-  padding: 10px 0 25px;
+  padding: 10px 0 0;
   margin: 0 -10px;
+}
+
+/* The react-slick root is the positioning context for the absolutely
+   positioned dots. Reserving padding here keeps the dots BELOW the cards
+   instead of overlapping them. */
+.sliderWrapper :global(.slick-slider) {
+  padding-bottom: 34px;
 }
 
 .sliderWrapper :global(.slick-track) {
@@ -105,11 +112,17 @@
 
 /* ── Slick Dots ── */
 .sliderWrapper :global(.slick-dots) {
-  bottom: -15px;
+  bottom: 0;
+  height: 20px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }
 
 .sliderWrapper :global(.slick-dots li) {
   margin: 0 4px;
+  width: 20px;
+  height: 20px;
 }
 
 .sliderWrapper :global(.slick-dots li button:before) {
@@ -268,7 +281,7 @@
 
 @media (max-width: 576px) {
   .accommodationsSection {
-    padding: 30px 4% 40px;
+    padding: 30px 4% 34px;
   }
 
   .headingArea {
@@ -287,7 +300,22 @@
 
   .sliderWrapper {
     margin: 0 -6px;
-    padding: 5px 0 20px;
+    padding: 5px 0 4px;
+  }
+
+  /* Reserve room under the cards for the dots on mobile */
+  .sliderWrapper :global(.slick-slider) {
+    padding-bottom: 26px;
+  }
+
+  .sliderWrapper :global(.slick-dots) {
+    bottom: 0;
+    height: 18px;
+  }
+
+  .sliderWrapper :global(.slick-dots li) {
+    width: 16px;
+    height: 16px;
   }
 
   .sliderWrapper :global(.slick-slide) {

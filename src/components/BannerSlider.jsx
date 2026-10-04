@@ -42,7 +42,7 @@ export default function BannerSlider({ banners = [] }) {
   const isMultiple = banners.length > 1;
 
   const settings = {
-    dots: isMultiple,
+    dots: false,
     arrows: isMultiple,
     infinite: isMultiple,
     fade: true,

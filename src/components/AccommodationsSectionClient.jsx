@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -97,6 +97,18 @@ export default function AccommodationsSectionClient({ accommodationsData = [] })
     subtitle: ''
   });
 
+  // Track the actual viewport width so we can deterministically decide how
+  // many cards to show per view. This avoids react-slick's responsive
+  // breakpoint quirks and guarantees a single card per view on mobile.
+  const [windowWidth, setWindowWidth] = useState(null);
+
+  useEffect(() => {
+    const updateWidth = () => setWindowWidth(window.innerWidth);
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
   const handleOpenGallery = (hotel, initialIndex = 0) => {
     const images = (Array.isArray(hotel.images) && hotel.images.length > 0)
       ? hotel.images
@@ -123,45 +135,37 @@ export default function AccommodationsSectionClient({ accommodationsData = [] })
 
   const total = accommodationsData.length;
 
+  // Decide how many slides to show based on the real viewport width.
+  // Defaults to desktop (4) until the client has measured the window.
+  const width = windowWidth ?? 1440;
+
+  let slidesPerView = 4;
+  if (width < 768) {
+    slidesPerView = 1; // phones & large phones — one card per view
+  } else if (width < 992) {
+    slidesPerView = 2; // tablets
+  } else if (width < 1200) {
+    slidesPerView = 3; // small desktops
+  }
+
+  // Never show more slides than there are items.
+  slidesPerView = Math.max(1, Math.min(slidesPerView, total));
+
+  const isMobileView = slidesPerView === 1;
+
   const sliderSettings = {
     dots: true,
-    arrows: true,
-    infinite: total > 4,
+    arrows: !isMobileView,
+    infinite: total > slidesPerView,
     speed: 600,
-    slidesToShow: 4,
+    slidesToShow: slidesPerView,
     slidesToScroll: 1,
-    autoplay: total > 4,
+    autoplay: total > slidesPerView,
     autoplaySpeed: 3800,
     pauseOnHover: true,
+    swipeToSlide: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: Math.min(3, total),
-          slidesToScroll: 1,
-          infinite: total > 3,
-        }
-      },
-      {
-        breakpoint: 840,
-        settings: {
-          slidesToShow: Math.min(2, total),
-          slidesToScroll: 1,
-          infinite: total > 2,
-        }
-      },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: total > 1,
-          arrows: false,
-        }
-      }
-    ]
   };
 
   return (
