@@ -29,7 +29,7 @@ async function fetchLatestBlogs() {
         'Authorization': `Bearer ${process.env.CMS_TOKEN || '141|PLIcQEisrq76oVJH35rTn3CqkZWZ6xaCSwNDWCiw2ea64d79'}`
       },
       body: JSON.stringify({ content_type_id: 'blog', status: 'published' }),
-      next: { revalidate: 0 },
+      next: { revalidate: 86400 },
     });
 
     let result = await res.json();
@@ -44,7 +44,7 @@ async function fetchLatestBlogs() {
           'Authorization': `Bearer ${process.env.CMS_TOKEN || '141|PLIcQEisrq76oVJH35rTn3CqkZWZ6xaCSwNDWCiw2ea64d79'}`
         },
         body: JSON.stringify({ content_type_id: 'blogs', status: 'published' }),
-        next: { revalidate: 30 },
+        next: { revalidate: 86400 },
       });
       const fallbackResult = await fallbackRes.json();
       items = Array.isArray(fallbackResult) ? fallbackResult : (fallbackResult.data?.data || fallbackResult.data || []);
@@ -115,12 +115,12 @@ export default async function NewsSection() {
     <section className={styles.newsSection}>
       <div className={styles.container}>
         <NewsHeader />
-        
+
         <div className={styles.grid}>
           {articles.map((article, index) => (
             <ArticleCard key={article.id || index} {...article} />
 
-))}
+          ))}
         </div>
       </div>
     </section>

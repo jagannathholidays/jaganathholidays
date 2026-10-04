@@ -22,7 +22,7 @@ async function fetchMainBanners() {
         'Authorization': `Bearer ${process.env.CMS_TOKEN || '141|PLIcQEisrq76oVJH35rTn3CqkZWZ6xaCSwNDWCiw2ea64d79'}`
       },
       body: JSON.stringify({ content_type_id: 'main-banner', status: 'published' }),
-      next: { revalidate: 30 },
+      next: { revalidate: 86400 },
     });
 
     const result = await res.json();

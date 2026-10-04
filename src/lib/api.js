@@ -54,7 +54,7 @@ export async function getPackageBySlug(slug) {
         slug: slug,
         content_type: 'packages',
       }),
-      next: { revalidate: 0 }, // Revalidate every 30s (testing mode)
+      next: { revalidate: 86400 }, // Revalidate every 30s (testing mode)
     });
 
     if (!res.ok) {
@@ -89,7 +89,7 @@ export async function getPackagesList(limit = 6) {
       body: JSON.stringify({
         content_type: 'packages',
       }),
-      next: { revalidate: 30 }, // Revalidate every 30s (testing mode)
+      next: { revalidate: 86400 }, // Revalidate every 30s (testing mode)
     });
 
     if (!res.ok) return [];
@@ -119,7 +119,7 @@ export async function getVehiclesList() {
         content_type_id: 'vehicles',
         status: 'published',
       }),
-      next: { revalidate: 30 }, // Revalidate every 30s
+      next: { revalidate: 86400 }, // Revalidate every 30s
     });
 
     if (!res.ok) {
@@ -152,7 +152,7 @@ export async function getBannerItems() {
         content_type_id: 'banner-items',
         status: 'published',
       }),
-      next: { revalidate: 30 }, // Revalidate every 30s
+      next: { revalidate: 86400 }, // Revalidate every 30s
     });
 
     if (!res.ok) {
@@ -185,7 +185,7 @@ export async function getMainBanners() {
         content_type_id: 'main-banner',
         status: 'published',
       }),
-      next: { revalidate: 30 }, // Revalidate every 30s
+      next: { revalidate: 86400 }, // Revalidate every 30s
     });
 
     if (!res.ok) {
@@ -220,7 +220,7 @@ export async function getBlogBySlug(slug) {
         slug: slug,
         content_type: 'blog',
       }),
-      next: { revalidate: 30 },
+      next: { revalidate: 86400 },
     });
 
     let data = await res.json();
@@ -237,7 +237,7 @@ export async function getBlogBySlug(slug) {
           slug: slug,
           content_type: 'blogs',
         }),
-        next: { revalidate: 30 },
+        next: { revalidate: 86400 },
       });
       data = await fallbackRes.json();
     }
@@ -269,7 +269,7 @@ export async function getBlogsList(limit = 3) {
         content_type_id: 'blog',
         status: 'published',
       }),
-      next: { revalidate: 30 },
+      next: { revalidate: 86400 },
     });
 
     let json = await res.json();
@@ -287,7 +287,7 @@ export async function getBlogsList(limit = 3) {
           content_type_id: 'blogs',
           status: 'published',
         }),
-        next: { revalidate: 30 },
+        next: { revalidate: 86400 },
       });
       json = await fallbackRes.json();
       items = json?.data?.data || json?.data || [];
@@ -316,7 +316,7 @@ export async function getGalleryItems(page = 1) {
         content_type_id: 'gallery',
         status: 'published',
       }),
-      next: { revalidate: 30 },
+      next: { revalidate: 86400 },
     });
 
     if (!res.ok) {
@@ -351,7 +351,7 @@ export async function getDestinationsTaxonomy() {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${CMS_TOKEN}`
       },
-      next: { revalidate: 30 }
+      next: { revalidate: 86400 }
     });
     const result = await res.json();
     if (result.success && result.data && result.data.length > 0) {
@@ -378,7 +378,7 @@ export async function getReviewsList() {
         slug: "reviews",
         content_type: "reviews",
       }),
-      next: { revalidate: 30 },
+      next: { revalidate: 86400 },
     });
 
     const result = await res.json();

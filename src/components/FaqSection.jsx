@@ -73,7 +73,7 @@ async function fetchFaqs() {
         'Authorization': `Bearer ${process.env.CMS_TOKEN || '141|PLIcQEisrq76oVJH35rTn3CqkZWZ6xaCSwNDWCiw2ea64d79'}`
       },
       body: JSON.stringify(payload),
-      next: { revalidate: 30 }
+      next: { revalidate: 86400 }
     });
 
     const result = await res.json();
@@ -103,7 +103,7 @@ export default async function FaqSection({ heading = "Frequently Asked Questions
     <section className={styles.faqSection}>
       <div className={styles.container}>
         <h2 className={styles.heading}>{heading}</h2>
-        
+
         {displayFaqs && displayFaqs.length > 0 ? (
           <FaqSectionClient faqsData={displayFaqs} />
         ) : (

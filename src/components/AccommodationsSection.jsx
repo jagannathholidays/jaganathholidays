@@ -19,7 +19,7 @@ async function fetchAccommodations() {
           'Authorization': `Bearer ${process.env.CMS_TOKEN || '141|PLIcQEisrq76oVJH35rTn3CqkZWZ6xaCSwNDWCiw2ea64d79'}`
         },
         body: JSON.stringify(payload),
-        next: { revalidate: 0 }
+        next: { revalidate: 86400 }
       });
 
       if (!res.ok) continue;

@@ -29,7 +29,7 @@ async function fetchGallery(page = 1) {
         content_type_id: 'gallery',
         status: 'published'
       }),
-      next: { revalidate: 30 },
+      next: { revalidate: 86400 },
     });
 
     const result = await res.json();
@@ -82,12 +82,12 @@ export default async function GalleryPage({ searchParams }) {
 
   return (
     <main>
-      <BreadcrumbBanner 
-        title="Image Gallery" 
-        breadcrumbs={breadcrumbs} 
+      <BreadcrumbBanner
+        title="Image Gallery"
+        breadcrumbs={breadcrumbs}
         bgImage="/jaganath-banner.webp"
       />
-      <FullGallery 
+      <FullGallery
         images={items}
         pagination={{ currentPage, hasNextPage, hasPrevPage }}
       />

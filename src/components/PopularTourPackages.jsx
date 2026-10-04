@@ -6,10 +6,10 @@ import AnimatedButton from './AnimatedButton';
 /* ── Data fetching ── */
 async function fetchPopularPackages() {
   const dummyPackages = [
-    { title: 'Golden Triangle Tour of Odisha',    duration: '2N / 3D', location: 'Puri - Konark - Bhubaneswar', price: '₹4,999',  rating: '4.8', badge: 'Best Seller', image: 'https://picsum.photos/400/300?random=40', slug: 'golden-triangle' },
-    { title: 'Odisha Adventure Tour Packages',    duration: '8N / 10D', location: 'Similipal - Satkosia',       price: '₹14,499', rating: '4.9', badge: 'Adventure',   image: 'https://picsum.photos/400/300?random=41', slug: 'odisha-adventure' },
-    { title: 'Puri Jagannath Rath Yatra Tour',    duration: '3N / 4D', location: 'Puri Jagannath Temple',      price: '₹6,999',  rating: '4.7', badge: 'Devotional',  image: 'https://picsum.photos/400/300?random=42', slug: 'rath-yatra' },
-    { title: 'Authentic Tribal Tour Packages',    duration: '5N / 6D', location: 'Koraput & Rayagada',         price: '₹7,999',  rating: '4.8', badge: 'Cultural',    image: 'https://picsum.photos/400/300?random=43', slug: 'tribal-tour' },
+    { title: 'Golden Triangle Tour of Odisha', duration: '2N / 3D', location: 'Puri - Konark - Bhubaneswar', price: '₹4,999', rating: '4.8', badge: 'Best Seller', image: 'https://picsum.photos/400/300?random=40', slug: 'golden-triangle' },
+    { title: 'Odisha Adventure Tour Packages', duration: '8N / 10D', location: 'Similipal - Satkosia', price: '₹14,499', rating: '4.9', badge: 'Adventure', image: 'https://picsum.photos/400/300?random=41', slug: 'odisha-adventure' },
+    { title: 'Puri Jagannath Rath Yatra Tour', duration: '3N / 4D', location: 'Puri Jagannath Temple', price: '₹6,999', rating: '4.7', badge: 'Devotional', image: 'https://picsum.photos/400/300?random=42', slug: 'rath-yatra' },
+    { title: 'Authentic Tribal Tour Packages', duration: '5N / 6D', location: 'Koraput & Rayagada', price: '₹7,999', rating: '4.8', badge: 'Cultural', image: 'https://picsum.photos/400/300?random=43', slug: 'tribal-tour' },
   ];
 
   try {
@@ -20,7 +20,7 @@ async function fetchPopularPackages() {
         'Authorization': `Bearer ${process.env.CMS_TOKEN}`
       },
       body: JSON.stringify({ content_type_id: 'packages', status: 'published', show_in_home: 'true' }),
-      next: { revalidate: 30 },
+      next: { revalidate: 86400 },
     });
 
     const result = await res.json();

@@ -28,13 +28,13 @@ function DestinationCard({ dest, index }) {
 
   return (
     <div className={`${styles.card} shineEffect`}>
-      <div 
-        className={styles.cardImage} 
+      <div
+        className={styles.cardImage}
         style={
-          imageUrl 
-            ? { backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' } 
+          imageUrl
+            ? { backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }
             : { backgroundColor: bgColor }
-        } 
+        }
       />
       <div className={styles.cardOverlay}>
         <h3 className={styles.cardTitle}>{dest.name}</h3>
@@ -51,7 +51,7 @@ function PaginationControls({ currentPage, totalPages }) {
 
   return (
     <div className={styles.pagination}>
-      <Link 
+      <Link
         href={`?page=${currentPage - 1}`}
         className={`${styles.pageBtn} ${currentPage === 1 ? styles.disabledBtn : ''}`}
         aria-disabled={currentPage === 1}
@@ -59,9 +59,9 @@ function PaginationControls({ currentPage, totalPages }) {
       >
         Prev
       </Link>
-      
+
       {[...Array(totalPages)].map((_, i) => (
-        <Link 
+        <Link
           key={i + 1}
           href={`?page=${i + 1}`}
           className={`${styles.pageBtn} ${currentPage === i + 1 ? styles.activePage : ''}`}
@@ -70,7 +70,7 @@ function PaginationControls({ currentPage, totalPages }) {
         </Link>
       ))}
 
-      <Link 
+      <Link
         href={`?page=${currentPage + 1}`}
         className={`${styles.pageBtn} ${currentPage === totalPages ? styles.disabledBtn : ''}`}
         aria-disabled={currentPage === totalPages}
@@ -100,7 +100,7 @@ export default async function DestinationsList({ searchParams }) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${process.env.CMS_TOKEN}`
       },
-      next: { revalidate: 30 }
+      next: { revalidate: 86400 }
     });
     const result = await res.json();
     if (result.success && result.data && result.data.length > 0) {
@@ -114,7 +114,7 @@ export default async function DestinationsList({ searchParams }) {
 
   const totalPages = Math.ceil(destinations.length / itemsPerPage);
   const currentPage = Math.min(Math.max(Number(resolvedParams.page || 1), 1), totalPages || 1);
-  
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = destinations.slice(indexOfFirstItem, indexOfLastItem);
