@@ -8,12 +8,17 @@ export async function POST(request, { params }) {
     const baseUrl = process.env.CMS_API_URL || 'https://cmsapi.one9ty.com';
     const targetUrl = `${baseUrl.replace(/\/+$/, '')}/api/v1/public/forms/${formId}/${slug}/submit`;
 
+    const headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
+    if (process.env.CMS_TOKEN) {
+      headers['Authorization'] = `Bearer ${process.env.CMS_TOKEN}`;
+    }
+
     const response = await fetch(targetUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
+      headers,
       body: JSON.stringify(body),
     });
 

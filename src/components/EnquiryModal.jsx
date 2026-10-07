@@ -52,10 +52,10 @@ export default function EnquiryModal({ show, handleClose, itemName = '', itemTyp
   };
 
   return (
-    <Modal 
-      show={show} 
-      onHide={handleModalClose} 
-      centered 
+    <Modal
+      show={show}
+      onHide={handleModalClose}
+      centered
       dialogClassName={styles.modalDialog}
       contentClassName={styles.modalContent}
     >
@@ -88,10 +88,10 @@ export default function EnquiryModal({ show, handleClose, itemName = '', itemTyp
             {/* Hidden field or reference */}
             <Form.Group className="mb-3">
               <Form.Label className={styles.formLabel}>Selected Service</Form.Label>
-              <Form.Control 
-                type="text" 
-                value={itemName} 
-                disabled 
+              <Form.Control
+                type="text"
+                value={itemName}
+                disabled
                 className={styles.disabledInput}
               />
             </Form.Group>

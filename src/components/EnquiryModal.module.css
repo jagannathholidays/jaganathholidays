@@ -87,7 +87,7 @@
   box-shadow: 0 0 0 3px rgba(216, 126, 0, 0.15) !important;
 }
 
-.formInput:focus + .inputIcon {
+.formInput:focus+.inputIcon {
   color: #d87e00;
 }
 
@@ -185,6 +185,7 @@
   0% {
     transform: scale(0);
   }
+
   100% {
     transform: scale(1);
   }

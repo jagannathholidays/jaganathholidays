@@ -11,7 +11,6 @@ import {
   FiAlertCircle, 
   FiShield 
 } from 'react-icons/fi';
-import { submitCmsForm } from '@/lib/formService';
 import styles from './ContactForm.module.css';
 
 /**
@@ -91,28 +90,38 @@ export default function ContactForm({
     setSubmitStatus(null);
     setErrorMessage('');
 
-    const res = await submitCmsForm({
-      formId,
-      slug,
-      data: {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        message: formData.message
-      }
-    });
+    try {
+      const response = await fetch(`/api/forms/${formId}/${slug}/submit`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message
+        })
+      });
 
-    setIsSubmitting(false);
+      const res = await response.json().catch(() => null);
 
-    if (res.success) {
-      setSubmitStatus('success');
-      setSubmissionRef(res.submission_no || '');
-      if (typeof onSuccess === 'function') {
-        onSuccess(res);
+      setIsSubmitting(false);
+
+      if (res && res.success) {
+        setSubmitStatus('success');
+        setSubmissionRef(res.submission_no || '');
+        if (typeof onSuccess === 'function') {
+          onSuccess(res);
+        }
+      } else {
+        setSubmitStatus('error');
+        setErrorMessage(res?.error || res?.message || 'Failed to submit. Please try again.');
       }
-    } else {
+    } catch (error) {
+      setIsSubmitting(false);
       setSubmitStatus('error');
-      setErrorMessage(res.error || 'Failed to submit. Please try again.');
+      setErrorMessage(error?.message || 'Failed to submit. Please try again.');
     }
   };
 

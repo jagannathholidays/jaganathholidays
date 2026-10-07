@@ -126,7 +126,7 @@ function FooterBottom() {
       </div>
 
       <div className={styles.socialIcons}>
-        <a href="https://www.facebook.com/profile.php?id=61594880006349" aria-label="Facebook"><FaFacebookF /></a>
+        <a href="https://www.facebook.com/jagannathholidaystours" aria-label="Facebook"><FaFacebookF /></a>
         <a href="https://www.instagram.com/jagannathholidays/" aria-label="Instagram"><FaInstagram /></a>
         <a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a>
         {/* <a href="#" aria-label="TripAdvisor"><FaTripadvisor /></a> */}
