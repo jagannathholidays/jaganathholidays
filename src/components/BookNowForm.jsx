@@ -7,57 +7,111 @@ import {
   FiPhone, 
   FiMessageSquare, 
   FiCheckCircle, 
+  FiAlertCircle,
   FiSend, 
   FiMapPin
 } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import styles from './BookNowForm.module.css';
 
-export default function BookNowForm() {
+export default function BookNowForm({
+  formId = 8,
+  slug = 'book-now',
+  onSuccess = null
+}) {
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
-    phone: '',
-    whatsapp: '',
     city: '',
-    specialNotes: ''
+    phone_number: '',
+    whatsapp: '',
+    description: ''
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [validated, setValidated] = useState(false);
-  const [bookingRef, setBookingRef] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [errorMessage, setErrorMessage] = useState('');
+  const [submissionRef, setSubmissionRef] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const form = e.currentTarget;
 
-    if (form.checkValidity() === false) {
-      e.stopPropagation();
-      setValidated(true);
+    if (!formData.name.trim()) {
+      setSubmitStatus('error');
+      setErrorMessage('Please enter your full name.');
       return;
     }
 
-    const randomRef = 'JH-' + Math.floor(100000 + Math.random() * 900000);
-    setBookingRef(randomRef);
-    setIsSubmitted(true);
-    setValidated(false);
+    if (!formData.email.trim()) {
+      setSubmitStatus('error');
+      setErrorMessage('Please enter your email address.');
+      return;
+    }
+
+    if (!formData.phone_number.trim()) {
+      setSubmitStatus('error');
+      setErrorMessage('Please enter your phone number.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    setErrorMessage('');
+
+    try {
+      const response = await fetch(`/api/forms/${formId}/${slug}/submit`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          city: formData.city.trim(),
+          phone_number: formData.phone_number.trim(),
+          whatsapp: formData.whatsapp.trim(),
+          description: formData.description.trim(),
+        }),
+      });
+
+      const res = await response.json().catch(() => null);
+
+      setIsSubmitting(false);
+
+      if (res && res.success) {
+        setSubmitStatus('success');
+        setSubmissionRef(res.submission_no || '');
+        if (typeof onSuccess === 'function') {
+          onSuccess(res);
+        }
+      } else {
+        setSubmitStatus('error');
+        setErrorMessage(res?.error || res?.message || 'Failed to submit. Please try again.');
+      }
+    } catch (error) {
+      setIsSubmitting(false);
+      setSubmitStatus('error');
+      setErrorMessage(error?.message || 'Network error occurred. Please try again.');
+    }
   };
 
   const resetForm = () => {
-    setIsSubmitted(false);
     setFormData({
-      fullName: '',
+      name: '',
       email: '',
-      phone: '',
-      whatsapp: '',
       city: '',
-      specialNotes: ''
+      phone_number: '',
+      whatsapp: '',
+      description: ''
     });
+    setSubmitStatus(null);
+    setErrorMessage('');
+    setSubmissionRef('');
   };
 
   return (
@@ -68,25 +122,27 @@ export default function BookNowForm() {
           
           {/* Form Left Side */}
           <div className={styles.formCard}>
-            {isSubmitted ? (
+            {submitStatus === 'success' ? (
               <div className={styles.successBox}>
                 <div className={styles.successIconWrapper}>
                   <FiCheckCircle className={styles.successIcon} />
                 </div>
-                <span className={styles.refBadge}>Booking Reference: {bookingRef}</span>
+                {submissionRef && (
+                  <span className={styles.refBadge}>Booking Reference: {submissionRef}</span>
+                )}
                 <h3 className={styles.successTitle}>Booking Request Received!</h3>
                 <p className={styles.successDesc}>
-                  Thank you, <strong>{formData.fullName}</strong>. Your travel inquiry has been successfully received.
+                  Thank you, <strong>{formData.name}</strong>. Your travel inquiry has been successfully received.
                 </p>
                 <div className={styles.summaryDetailsBox}>
                   <h4>Submitted Details</h4>
                   <ul>
-                    <li><strong>Full Name:</strong> {formData.fullName}</li>
+                    <li><strong>Full Name:</strong> {formData.name}</li>
                     <li><strong>Email Address:</strong> {formData.email}</li>
-                    <li><strong>Phone Number:</strong> {formData.phone}</li>
+                    <li><strong>Phone Number:</strong> {formData.phone_number}</li>
                     {formData.whatsapp && <li><strong>WhatsApp Number:</strong> {formData.whatsapp}</li>}
                     {formData.city && <li><strong>City / Location:</strong> {formData.city}</li>}
-                    {formData.specialNotes && <li><strong>Notes:</strong> {formData.specialNotes}</li>}
+                    {formData.description && <li><strong>Requirements:</strong> {formData.description}</li>}
                   </ul>
                 </div>
                 <p className={styles.calloutText}>
@@ -98,14 +154,20 @@ export default function BookNowForm() {
               </div>
             ) : (
               <form 
-                noValidate 
-                className={`${styles.form} ${validated ? styles.wasValidated : ''}`} 
+                className={styles.form} 
                 onSubmit={handleSubmit}
               >
                 <div className={styles.formHeader}>
                   <h2 className={styles.formTitle}>Book Your Holiday Package</h2>
                   <p className={styles.formSub}>Fill out your contact details below for a customized quote & instant confirmation.</p>
                 </div>
+
+                {submitStatus === 'error' && (
+                  <div className={styles.alertError} role="alert">
+                    <FiAlertCircle className={styles.alertIcon} />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
 
                 {/* Contact & Traveler Details */}
                 <div className={styles.formGroupSection}>
@@ -120,9 +182,9 @@ export default function BookNowForm() {
                         <FiUser className={styles.inputIcon} />
                         <input 
                           type="text" 
-                          name="fullName" 
+                          name="name" 
                           placeholder="Your complete name" 
-                          value={formData.fullName} 
+                          value={formData.name} 
                           onChange={handleChange}
                           className={styles.input}
                           required
@@ -154,9 +216,9 @@ export default function BookNowForm() {
                         <FiPhone className={styles.inputIcon} />
                         <input 
                           type="tel" 
-                          name="phone" 
+                          name="phone_number" 
                           placeholder="10-digit mobile number" 
-                          value={formData.phone} 
+                          value={formData.phone_number} 
                           onChange={handleChange}
                           className={styles.input}
                           required
@@ -200,10 +262,10 @@ export default function BookNowForm() {
                     <div className={styles.iconInputWrapper}>
                       <FiMessageSquare className={`${styles.inputIcon} ${styles.textareaIcon}`} />
                       <textarea 
-                        name="specialNotes" 
+                        name="description" 
                         rows="3"
                         placeholder="Tell us about special places you want to visit, dietary choices, extra beds, or flight details..."
-                        value={formData.specialNotes}
+                        value={formData.description}
                         onChange={handleChange}
                         className={styles.textarea}
                       />
@@ -211,8 +273,16 @@ export default function BookNowForm() {
                   </div>
                 </div>
 
-                <button type="submit" className={styles.submitBtn}>
-                  <FiSend className={styles.sendIcon} /> Confirm & Submit Booking Request
+                <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <span className={styles.spinner}></span> Submitting Request...
+                    </>
+                  ) : (
+                    <>
+                      <FiSend className={styles.sendIcon} /> Confirm & Submit Booking Request
+                    </>
+                  )}
                 </button>
               </form>
             )}
@@ -227,11 +297,11 @@ export default function BookNowForm() {
               <div className={styles.summaryBody}>
                 <div className={styles.summaryRow}>
                   <span className={styles.sumLabel}>Full Name</span>
-                  <span className={styles.sumVal}>{formData.fullName || 'Not entered'}</span>
+                  <span className={styles.sumVal}>{formData.name || 'Not entered'}</span>
                 </div>
                 <div className={styles.summaryRow}>
                   <span className={styles.sumLabel}>Phone</span>
-                  <span className={styles.sumVal}>{formData.phone || 'Not entered'}</span>
+                  <span className={styles.sumVal}>{formData.phone_number || 'Not entered'}</span>
                 </div>
                 <div className={styles.summaryRow}>
                   <span className={styles.sumLabel}>WhatsApp</span>
