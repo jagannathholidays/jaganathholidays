@@ -14,12 +14,12 @@ export async function generateMetadata({ params }) {
   }
 
   const details = blog.data || {};
-  const title = details.title || blog.title || 'Blog Details';
+  const title = details.meta_title || blog.title || 'Blog Details';
   const rawDescription = details.meta_description || details.short_description || details.content || '';
   const description = stripHtml(rawDescription).slice(0, 160) || 'Read the latest blog from Jagannath Holidays.';
 
   return {
-    title: `${title} | Jagannath Holidays`,
+    title: `${title}`,
     description,
   };
 }

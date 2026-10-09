@@ -36,13 +36,13 @@ export async function generateMetadata({ params }) {
   const pageUrl = `${siteUrl}/package/${slug}`;
 
   return {
-    title: `${title} | Jagannath Holidays`,
+    title: `${title}`,
     description: plainDescription,
     alternates: {
       canonical: pageUrl,
     },
     openGraph: {
-      title: `${title} | Jagannath Holidays`,
+      title: `${title}`,
       description: plainDescription,
       url: pageUrl,
       siteName: 'Jagannath Holidays',
