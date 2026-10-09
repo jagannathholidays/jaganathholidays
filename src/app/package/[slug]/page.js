@@ -20,12 +20,11 @@ export async function generateMetadata({ params }) {
     };
   }
 
+
   const details = packageItem.data || {};
-  const title = packageItem.title || details.title || 'Tour Package';
+  const title = details.meta_title || packageItem.title || details.title || 'Tour Package';
   
-  const rawDescription = packageItem.meta?.meta_description || 
-    packageItem.meta?.description || 
-    details.description || 
+  const rawDescription = details.meta_description || 
     'Explore customized and unforgettable tour packages across Odisha with Jagannath Holidays.';
     
   const plainDescription = stripHtml(rawDescription).slice(0, 160);

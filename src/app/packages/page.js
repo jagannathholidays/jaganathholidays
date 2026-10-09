@@ -3,8 +3,8 @@ import PackageFeatures from '@/components/PackageFeatures';
 import TourPackagesSection from '@/components/TourPackagesSection';
 
 export const metadata = {
-  title: 'Tour Packages | Jagannath Holidays',
-  description: 'Explore our wide range of tour packages for Odisha, Puri, and beyond.',
+  title: 'Book Our Affordable Tour Packages | Jagannath Holidays',
+  description: 'Jagannath Holidays, the prominent family-owned and operated travel agency, since the last 7 years offers assorted range of custom tour packages in Odisha.',
 };
 
 export default async function PackagesPage({ searchParams }) {

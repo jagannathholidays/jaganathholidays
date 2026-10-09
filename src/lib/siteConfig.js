@@ -16,7 +16,7 @@ export const siteConfig = {
     // Human-readable phone number shown on the page.
     phoneDisplay: '+91 9583837770',
     // WhatsApp number for wa.me links (digits only, with country code).
-    whatsapp: '919583837770',
+    whatsapp: '+919876543210',
     email: 'info@jagannathholidays.com',
     website: 'https://www.jagannathholidays.com',
     websiteDisplay: 'www.jagannathholidays.com',

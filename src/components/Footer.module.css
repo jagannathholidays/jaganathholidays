@@ -147,6 +147,18 @@
   margin: 0;
 }
 
+.creditLink {
+  color: #d87e00;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.creditLink:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 .bottomLinks {
   display: flex;
   align-items: center;

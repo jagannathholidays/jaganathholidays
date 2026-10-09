@@ -13,6 +13,11 @@ import FaqSection from "@/components/FaqSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { getDestinationsTaxonomy, getReviewsList } from "@/lib/api";
 
+export const metadata = {
+  title: 'Tour Operator in Odisha for Puri Jagannath Tour Packages | Jagannath Holidays',
+  description: 'Jagannath Holidays, the leading trusted family-owned and operated travel partner, has provided fully customized tour packages across Odisha since 2020.',
+};
+
 export default async function Home() {
   const [reviewsData, destinationsData] = await Promise.all([
     getReviewsList(),

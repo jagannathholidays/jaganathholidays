@@ -121,6 +121,9 @@ function ContactCards() {
         <a href={`tel:${contact.phone}`} className={styles.cardLink}>
           {contact.phoneDisplay} →
         </a>
+        <a href={`tel:9583357770`} className={styles.cardLink}>
+         +91 9583357770 →
+        </a>
       </div>
 
       <div className={styles.contactCard}>

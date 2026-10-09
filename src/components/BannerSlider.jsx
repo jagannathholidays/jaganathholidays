@@ -61,11 +61,21 @@ export default function BannerSlider({ banners = [] }) {
       <Slider {...settings}>
         {banners.map((banner, index) => {
           const isExternal = banner.link?.startsWith('http://') || banner.link?.startsWith('https://');
+          const desktopImage = (banner.image && typeof banner.image === 'string' && banner.image.trim())
+            ? banner.image
+            : '/jaganath-banner.webp';
+          const mobileImage = (banner.mobileImage && typeof banner.mobileImage === 'string' && banner.mobileImage.trim())
+            ? banner.mobileImage
+            : desktopImage;
+
           return (
             <div key={banner.id || index} className={styles.slideOuter}>
               <div
                 className={styles.bannerSlide}
-                style={{ backgroundImage: `url(${banner.image})` }}
+                style={{
+                  '--bg-desktop': `url(${desktopImage})`,
+                  '--bg-mobile': `url(${mobileImage})`,
+                }}
               >
                 <div className={styles.bannerOverlay}></div>
                 <div className={styles.bannerContent}>

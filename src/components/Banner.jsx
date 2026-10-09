@@ -11,6 +11,7 @@ async function fetchMainBanners() {
       buttonText: 'View All Destinations',
       link: '/packages',
       image: '/jaganath-banner.webp',
+      mobileImage: '/jaganath-banner.webp',
     },
   ];
 
@@ -21,16 +22,27 @@ async function fetchMainBanners() {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${process.env.CMS_TOKEN || '141|PLIcQEisrq76oVJH35rTn3CqkZWZ6xaCSwNDWCiw2ea64d79'}`
       },
-      body: JSON.stringify({ content_type_id: 'main-banner', status: 'published' }),
-      next: { revalidate: 86400 },
+      body: JSON.stringify({ content_type_id: 'main-banner', status: 'published', sort_by: "data.sort_order",sort_order: "asc"}),
+      next: { revalidate: 0 },
     });
 
     const result = await res.json();
     if (result.success && result.data?.data?.length > 0) {
       return result.data.data.map((item, index) => {
-        const itemData = item.data || {};
-        const imagePath = itemData.banner_image?.file_path || itemData.banner_image;
+        const extractPath = (img) => {
+          if (!img) return null;
+          if (typeof img === 'string') return img.trim() || null;
+          if (typeof img === 'object') {
+            const path = img.file_path || img.url;
+            return typeof path === 'string' && path.trim() ? path.trim() : null;
+          }
+          return null;
+        };
+
+        const imagePath = extractPath(itemData.banner_image);
+        const mobileImagePath = extractPath(itemData.mobile_image);
         const image = getImageUrl(imagePath, '/jaganath-banner.webp');
+        const mobileImage = mobileImagePath ? getImageUrl(mobileImagePath, image) : image;
 
         return {
           id: item.id || item._id || index,
@@ -39,6 +51,7 @@ async function fetchMainBanners() {
           buttonText: itemData.button_text || 'Explore Now',
           link: itemData.link || '/packages',
           image,
+          mobileImage,
         };
       });
     }

@@ -3,16 +3,8 @@ import ContactSection from '@/components/ContactSection';
 import { siteConfig } from '@/lib/siteConfig';
 
 export const metadata = {
-  title: 'Contact Us | Jagannath Holidays - Odisha Tour & Travel Specialists',
-  description: `Connect with Jagannath Holidays for customized Odisha tour packages, Puri Jagannath Dham Darshan, Chilika Lake tours, and cab rentals. Call ${siteConfig.contact.phoneDisplay} or send an inquiry.`,
-  keywords:
-    'Contact Jagannath Holidays, Odisha tour operator, Puri holiday packages, travel agency Bhubaneswar, Jagannath Dham Yatra booking',
-  openGraph: {
-    title: 'Contact Us | Jagannath Holidays',
-    description:
-      'Get in touch with our local Odisha travel experts for customized holiday itineraries, spiritual tours, and travel assistance.',
-    images: ['/jaganath-banner.webp'],
-  },
+  title: 'Contact Us - Customize Tour Packages Itinerary | Jagannath Holidays',
+  description: `Planning your dream stopover in Odisha? Don’t worry! Fill out the contact us form on the Jagannath Holidays site or call us directly today!`,
 };
 
 export default function ContactPage() {

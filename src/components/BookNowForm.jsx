@@ -25,7 +25,8 @@ export default function BookNowForm({
     city: '',
     phone_number: '',
     whatsapp: '',
-    description: ''
+    description: '',
+    _hp_email: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,6 +41,11 @@ export default function BookNowForm({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Honeypot spam bot detection
+    if (formData._hp_email) {
+      return;
+    }
 
     if (!formData.name.trim()) {
       setSubmitStatus('error');
@@ -107,7 +113,8 @@ export default function BookNowForm({
       city: '',
       phone_number: '',
       whatsapp: '',
-      description: ''
+      description: '',
+      _hp_email: ''
     });
     setSubmitStatus(null);
     setErrorMessage('');
@@ -157,6 +164,20 @@ export default function BookNowForm({
                 className={styles.form} 
                 onSubmit={handleSubmit}
               >
+                {/* Honeypot field for bot spam detection */}
+                <div style={{ display: 'none', position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                  <label htmlFor="_hp_email">Please leave this field empty</label>
+                  <input
+                    type="text"
+                    id="_hp_email"
+                    name="_hp_email"
+                    value={formData._hp_email}
+                    onChange={handleChange}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div className={styles.formHeader}>
                   <h2 className={styles.formTitle}>Book Your Holiday Package</h2>
                   <p className={styles.formSub}>Fill out your contact details below for a customized quote & instant confirmation.</p>
