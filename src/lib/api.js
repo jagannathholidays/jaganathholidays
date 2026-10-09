@@ -89,7 +89,7 @@ export async function getPackagesList(limit = 6) {
       body: JSON.stringify({
         content_type: 'packages',
       }),
-      next: { revalidate: 86400 }, // Revalidate every 30s (testing mode)
+      next: { revalidate: 0 }, // Revalidate every 30s (testing mode)
     });
 
     if (!res.ok) return [];

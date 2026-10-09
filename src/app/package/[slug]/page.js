@@ -38,7 +38,6 @@ export async function generateMetadata({ params }) {
   return {
     title: `${title} | Jagannath Holidays`,
     description: plainDescription,
-    keywords: keywords,
     alternates: {
       canonical: pageUrl,
     },
