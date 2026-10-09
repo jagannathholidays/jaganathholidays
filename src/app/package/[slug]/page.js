@@ -22,24 +22,15 @@ export async function generateMetadata({ params }) {
 
 
   const details = packageItem.data || {};
-  const title = details.meta_title || packageItem.title || details.title || 'Tour Package';
+  const title = details.meta_title || details.title || '';
   
-  const rawDescription = details.meta_description || 
-    'Explore customized and unforgettable tour packages across Odisha with Jagannath Holidays.';
+  const rawDescription = details.meta_description || '';
     
   const plainDescription = stripHtml(rawDescription).slice(0, 160);
   const coverImageUrl = getImageUrl(details.cover_image?.file_path);
 
   // Extract destination names for keywords if available
   const destinationTerms = packageItem.terms?.filter(t => t.taxonomy?.slug === 'destinations').map(t => t.name) || [];
-  const keywords = [
-    title,
-    'Odisha Tour Packages',
-    'Jagannath Holidays',
-    'Puri Jagannath Tour',
-    ...destinationTerms,
-    'Odisha Tourism'
-  ];
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jagannathholidays.com';
   const pageUrl = `${siteUrl}/package/${slug}`;
