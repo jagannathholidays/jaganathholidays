@@ -14,7 +14,6 @@
   min-height: 680px;
   display: flex !important;
   align-items: center;
-  background-image: var(--bg-desktop);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -143,7 +142,6 @@
 
 @media (max-width: 768px) {
   .bannerSlide {
-    background-image: var(--bg-mobile, var(--bg-desktop));
     min-height: 540px;
     padding: 80px 5% 100px;
   }
