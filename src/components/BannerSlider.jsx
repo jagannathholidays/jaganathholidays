@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Slider from "react-slick";
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
@@ -35,6 +36,17 @@ function NextArrow({ onClick, currentSlide, slideCount }) {
 }
 
 export default function BannerSlider({ banners = [] }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   if (!banners || banners.length === 0) {
     return null;
   }
@@ -67,15 +79,13 @@ export default function BannerSlider({ banners = [] }) {
           const mobileImage = (banner.mobileImage && typeof banner.mobileImage === 'string' && banner.mobileImage.trim())
             ? banner.mobileImage
             : desktopImage;
+          const currentImage = isMobile ? mobileImage : desktopImage;
 
           return (
             <div key={banner.id || index} className={styles.slideOuter}>
               <div
                 className={styles.bannerSlide}
-                style={{
-                  '--bg-desktop': `url(${desktopImage})`,
-                  '--bg-mobile': `url(${mobileImage})`,
-                }}
+                style={{ backgroundImage: `url(${currentImage})` }}
               >
                 <div className={styles.bannerOverlay}></div>
                 <div className={styles.bannerContent}>

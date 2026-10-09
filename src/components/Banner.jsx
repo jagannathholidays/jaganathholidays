@@ -29,6 +29,8 @@ async function fetchMainBanners() {
     const result = await res.json();
     if (result.success && result.data?.data?.length > 0) {
       return result.data.data.map((item, index) => {
+        const itemData = item.data || {};
+
         const extractPath = (img) => {
           if (!img) return null;
           if (typeof img === 'string') return img.trim() || null;
