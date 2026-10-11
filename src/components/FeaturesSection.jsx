@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './FeaturesSection.module.css';
 import { FiGlobe, FiPercent, FiHome, FiShield } from 'react-icons/fi';
 
@@ -39,9 +41,14 @@ function FeatureCard({ icon, title, subtitle }) {
 }
 
 /* ── Main Component ── */
-export default function FeaturesSection() {
+export default function FeaturesSection({ noBgImage = false }) {
+  const sectionClass = noBgImage
+    ? `${styles.featuresSection} ${styles.darkGradientBg}`
+    : styles.featuresSection;
+
   return (
-    <section className={styles.featuresSection}>
+    <section className={sectionClass}>
+      <h2 className={styles.sectionHeading}>Why Travel with Jagannath Holidays?</h2>
       <div className={styles.container}>
         {featuresData.map((feature, index) => (
           <FeatureCard

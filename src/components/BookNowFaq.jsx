@@ -5,28 +5,28 @@ import styles from './BookNowFaq.module.css';
 
 const bookingFaqs = [
   {
-    question: "How do I confirm my booking with Jagannath Holidays?",
+    question: "What Steps Should I Follow to Confirm My Booking?",
     answer: "After submitting your booking request online, our travel expert will contact you with a customized itinerary and price quote. Once you confirm, an advance deposit completes your reservation, and we issue an official booking confirmation voucher."
   },
   {
-    question: "What is the advance payment required for booking?",
-    answer: "We typically require a 25% to 30% advance payment to reserve hotels, cabs, and guides. The remaining balance can be conveniently paid upon arrival in Odisha or before the start of your tour."
+    question: "How Much Advance Payment Do I Need to Make for Booking?",
+    answer: "We generally ask for 25 to 30 percent upfront to reserve cabs, hotels and experienced guides. Don’t worry about paying the full amount upfront. You can pay the remaining balance once you arrive in Odisha or before your trip begins. "
   },
   {
-    question: "Can I customize the itinerary after submitting the booking request?",
+    question: "I Have Submitted My Booking Request. Can I Still Customize the Package?",
     answer: "Yes, absolutely! All our tour packages are 100% customizable. You can request changes to hotel categories, destinations, vehicle models, or travel dates prior to final confirmation."
   },
   {
-    question: "What is your cancellation and refund policy?",
-    answer: "We offer flexible cancellation policies. Cancellations made 15+ days prior to travel receive a full refund minus minimal admin fees. Detailed terms are provided transparently with your booking quotation."
+    question: "How Flexible Is Your Cancellation and Refund Policy?",
+    answer: "As a trusted travel agency, we keep our cancellation policies flexible as well as fair. If you need to cancel your trip 15+ days prior to travel, you will get a full refund after deducting a minimal administrative fee. You will get all the details regarding this with your booking quotation."
   },
   {
-    question: "Do you provide airport and railway station pickup and drop?",
-    answer: "Yes, complimentary or included pickup and drop services from Bhubaneswar Airport (BBI), Bhubaneswar Railway Station, or Puri Railway Station are provided in all tour packages."
+    question: "Can I Get Railway Station or Airport Pickup and Drop Facility?",
+    answer: "Yes. All our tour packages include comfortable and hassle-free pickup and drop services from Bhubaneswar Railway Station, Airport and Puri Railway Station. From the moment you reach Odisha, your journey is smooth as well as worry‑free."
   },
   {
-    question: "Are driver allowances, fuel, tolls, and parking included in cab prices?",
-    answer: "Yes! All vehicle prices quoted by Jagannath Holidays include fuel, driver allowances, toll taxes, state permits, and parking fees with zero hidden extra costs."
+    question: "Is Everything Included in The Cab Fare like Tolls, Fuel and Parking?",
+    answer: "Yes! Our cab fares are all‑inclusive. The cost we quote covers fuel, driver allowances, tolls, state permits, and parking fees. You can just relax and enjoy your trip knowing there are no hidden costs. We always maintain maximum transparency."
   }
 ];
 

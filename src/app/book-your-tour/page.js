@@ -1,6 +1,7 @@
 import BreadcrumbBanner from '@/components/BreadcrumbBanner';
 import BookNowForm from '@/components/BookNowForm';
 import PopularTourPackages from '@/components/PopularTourPackages';
+import FeaturesSection from '@/components/FeaturesSection';
 import VehiclesSection from '@/components/VehiclesSection';
 import AccommodationsSection from '@/components/AccommodationsSection';
 import FaqSection from '@/components/FaqSection';
@@ -34,10 +35,11 @@ export default async function BookYourTourPage() {
       <BreadcrumbBanner
         title="Book Your Tour"
         breadcrumbs={breadcrumbs}
-        bgVideo="/videos/road.mp4"
+        bgImage="/jaganath-banner.webp"
       />
       <BookNowForm />
       <PopularTourPackages />
+      <FeaturesSection noBgImage />
       <VehiclesSection />
       <AccommodationsSection />
       <FaqSection />

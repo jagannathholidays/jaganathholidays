@@ -48,11 +48,11 @@ function BreadcrumbTrail({ breadcrumbs }) {
 
 /* ── Main Component ── */
 export default function BreadcrumbBanner({ title, breadcrumbs = [], bgImage = '/jaganath-banner.webp', bgVideo }) {
-  const inlineStyle = bgVideo ? {} : { backgroundImage: `url(${bgImage})` };
+  const inlineStyle = { backgroundImage: `url(${bgImage || '/jaganath-banner.webp'})` };
 
   return (
     <section className={styles.bannerSection} style={inlineStyle}>
-      <BannerBackground bgVideo={bgVideo} bgImage={bgImage} />
+      {/* <BannerBackground bgVideo={bgVideo} bgImage={bgImage} /> */}
       <div className={styles.overlay}></div>
       <div className={styles.container}>
         <h1 className={styles.title}>{title}</h1>
