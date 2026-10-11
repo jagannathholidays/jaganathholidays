@@ -36,7 +36,7 @@ async function fetchBlogs(page = 1) {
         'Authorization': `Bearer ${process.env.CMS_TOKEN || '141|PLIcQEisrq76oVJH35rTn3CqkZWZ6xaCSwNDWCiw2ea64d79'}`
       },
       body: JSON.stringify({ content_type_id: 'blog', status: 'published' }),
-      next: { revalidate: 86400 },
+      next: { revalidate: 10 },
     });
 
     let result = await res.json();
@@ -50,7 +50,7 @@ async function fetchBlogs(page = 1) {
           'Authorization': `Bearer ${process.env.CMS_TOKEN || '141|PLIcQEisrq76oVJH35rTn3CqkZWZ6xaCSwNDWCiw2ea64d79'}`
         },
         body: JSON.stringify({ content_type_id: 'blogs', status: 'published' }),
-        next: { revalidate: 86400 },
+        next: { revalidate: 10 },
       });
       const fallbackResult = await fallbackRes.json();
       if (fallbackResult.success && fallbackResult.data?.data?.length > 0) {

@@ -19,8 +19,8 @@ async function fetchPopularPackages() {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${process.env.CMS_TOKEN}`
       },
-      body: JSON.stringify({ content_type_id: 'packages', status: 'published', show_in_home: 'true' }),
-      next: { revalidate: 86400 },
+      body: JSON.stringify({ content_type_id: 'packages', status: 'published', show_in_home: 'true', per_page: 8 }),
+      next: { revalidate: 10 },
     });
 
     const result = await res.json();

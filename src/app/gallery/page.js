@@ -29,7 +29,7 @@ async function fetchGallery(page = 1) {
         content_type_id: 'gallery',
         status: 'published'
       }),
-      next: { revalidate: 86400 },
+      next: { revalidate: 10 },
     });
 
     const result = await res.json();

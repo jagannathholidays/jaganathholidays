@@ -100,7 +100,7 @@ export default async function DestinationsList({ searchParams }) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${process.env.CMS_TOKEN}`
       },
-      next: { revalidate: 86400 }
+      next: { revalidate: 10 }
     });
     const result = await res.json();
     if (result.success && result.data && result.data.length > 0) {
