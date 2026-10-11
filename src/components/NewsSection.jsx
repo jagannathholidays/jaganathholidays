@@ -29,7 +29,7 @@ async function fetchLatestBlogs() {
         'Authorization': `Bearer ${process.env.CMS_TOKEN || '141|PLIcQEisrq76oVJH35rTn3CqkZWZ6xaCSwNDWCiw2ea64d79'}`
       },
       body: JSON.stringify({ content_type_id: 'blog', status: 'published' }),
-      next: { revalidate: 10 },
+      next: { revalidate: 21600 },
     });
 
     let result = await res.json();
@@ -44,7 +44,7 @@ async function fetchLatestBlogs() {
           'Authorization': `Bearer ${process.env.CMS_TOKEN || '141|PLIcQEisrq76oVJH35rTn3CqkZWZ6xaCSwNDWCiw2ea64d79'}`
         },
         body: JSON.stringify({ content_type_id: 'blogs', status: 'published' }),
-        next: { revalidate: 10 },
+        next: { revalidate: 21600 },
       });
       const fallbackResult = await fallbackRes.json();
       items = Array.isArray(fallbackResult) ? fallbackResult : (fallbackResult.data?.data || fallbackResult.data || []);
