@@ -27,8 +27,17 @@ async function fetchMainBanners() {
     });
 
     const result = await res.json();
+
     if (result.success && result.data?.data?.length > 0) {
-      return result.data.data.map((item, index) => {
+      const getSortOrder = (item) => {
+        const order = item?.data?.sort_order ?? item?.sort_order;
+        const num = Number(order);
+        return Number.isFinite(num) ? num : 999999;
+      };
+
+      const sortedItems = [...result.data.data].sort((a, b) => getSortOrder(a) - getSortOrder(b));
+
+      return sortedItems.map((item, index) => {
         const itemData = item.data || {};
 
         const extractPath = (img) => {
