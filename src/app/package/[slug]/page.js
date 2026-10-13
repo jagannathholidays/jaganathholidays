@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
   // Extract destination names for keywords if available
   const destinationTerms = packageItem.terms?.filter(t => t.taxonomy?.slug === 'destinations').map(t => t.name) || [];
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://jagannathholidays.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.jagannathholidays.com';
   const pageUrl = `${siteUrl}/package/${slug}`;
 
   return {
