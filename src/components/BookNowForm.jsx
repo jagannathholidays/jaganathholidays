@@ -200,7 +200,7 @@ export default function BookNowForm({
                 </div>
 
                 <div className={styles.formHeader}>
-                  <h2 className={styles.formTitle}>Book Your Holiday Package</h2>
+                  <h2 className={styles.formTitle}>Book Your Odisha Tour Packages</h2>
                   <p className={styles.formSub}>Fill out your contact details below for a customized quote & instant confirmation.</p>
                 </div>
 
