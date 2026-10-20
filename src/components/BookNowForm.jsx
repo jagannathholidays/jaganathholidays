@@ -9,7 +9,9 @@ import {
   FiCheckCircle, 
   FiAlertCircle,
   FiSend, 
-  FiMapPin
+  FiMapPin,
+  FiCalendar,
+  FiUsers
 } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import styles from './BookNowForm.module.css';
@@ -25,6 +27,10 @@ export default function BookNowForm({
     city: '',
     phone_number: '',
     whatsapp: '',
+    arrival_date: '',
+    departure_date: '',
+    persons: '',
+    children: '',
     description: '',
     _hp_email: ''
   });
@@ -81,6 +87,13 @@ export default function BookNowForm({
           city: formData.city.trim(),
           phone_number: formData.phone_number.trim(),
           whatsapp: formData.whatsapp.trim(),
+          arrival_date: formData.arrival_date,
+          departure_date: formData.departure_date,
+          date: formData.arrival_date,
+          travel_date: formData.arrival_date,
+          persons: formData.persons,
+          passengers: formData.persons,
+          children: formData.children,
           description: formData.description.trim(),
         }),
       });
@@ -113,6 +126,10 @@ export default function BookNowForm({
       city: '',
       phone_number: '',
       whatsapp: '',
+      arrival_date: '',
+      departure_date: '',
+      persons: '',
+      children: '',
       description: '',
       _hp_email: ''
     });
@@ -149,6 +166,10 @@ export default function BookNowForm({
                     <li><strong>Phone Number:</strong> {formData.phone_number}</li>
                     {formData.whatsapp && <li><strong>WhatsApp Number:</strong> {formData.whatsapp}</li>}
                     {formData.city && <li><strong>City / Location:</strong> {formData.city}</li>}
+                    {formData.arrival_date && <li><strong>Arrival Date:</strong> {formData.arrival_date}</li>}
+                    {formData.departure_date && <li><strong>Departure Date:</strong> {formData.departure_date}</li>}
+                    {formData.persons && <li><strong>No. of persons:</strong> {formData.persons}</li>}
+                    {formData.children && <li><strong>No. of Children:</strong> {formData.children}</li>}
                     {formData.description && <li><strong>Requirements:</strong> {formData.description}</li>}
                   </ul>
                 </div>
@@ -278,6 +299,71 @@ export default function BookNowForm({
                     </div>
                   </div>
 
+                  <div className={styles.rowTwo}>
+                    <div className={styles.inputGroup}>
+                      <label className={styles.label}>Arrival Date</label>
+                      <div className={styles.iconInputWrapper}>
+                        <FiCalendar className={styles.inputIcon} />
+                        <input 
+                          type="date" 
+                          name="arrival_date" 
+                          value={formData.arrival_date} 
+                          onChange={handleChange}
+                          className={styles.input}
+                        />
+                      </div>
+                    </div>
+
+                    <div className={styles.inputGroup}>
+                      <label className={styles.label}>Departure Date</label>
+                      <div className={styles.iconInputWrapper}>
+                        <FiCalendar className={styles.inputIcon} />
+                        <input 
+                          type="date" 
+                          name="departure_date" 
+                          value={formData.departure_date} 
+                          onChange={handleChange}
+                          className={styles.input}
+                          min={formData.arrival_date || undefined}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={styles.rowTwo}>
+                    <div className={styles.inputGroup}>
+                      <label className={styles.label}>No. of persons</label>
+                      <div className={styles.iconInputWrapper}>
+                        <FiUsers className={styles.inputIcon} />
+                        <input 
+                          type="number" 
+                          name="persons" 
+                          placeholder="e.g. 2" 
+                          min="1"
+                          value={formData.persons} 
+                          onChange={handleChange}
+                          className={styles.input}
+                        />
+                      </div>
+                    </div>
+
+                    <div className={styles.inputGroup}>
+                      <label className={styles.label}>No. of Children</label>
+                      <div className={styles.iconInputWrapper}>
+                        <FiUsers className={styles.inputIcon} />
+                        <input 
+                          type="number" 
+                          name="children" 
+                          placeholder="e.g. 0" 
+                          min="0"
+                          value={formData.children} 
+                          onChange={handleChange}
+                          className={styles.input}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                   <div className={styles.inputGroup}>
                     <label className={styles.label}>Special Requirements or Customization Notes</label>
                     <div className={styles.iconInputWrapper}>
@@ -336,6 +422,30 @@ export default function BookNowForm({
                   <span className={styles.sumLabel}>City</span>
                   <span className={styles.sumVal}>{formData.city || 'Not entered'}</span>
                 </div>
+                {formData.arrival_date && (
+                  <div className={styles.summaryRow}>
+                    <span className={styles.sumLabel}>Arrival Date</span>
+                    <span className={styles.sumVal}>{formData.arrival_date}</span>
+                  </div>
+                )}
+                {formData.departure_date && (
+                  <div className={styles.summaryRow}>
+                    <span className={styles.sumLabel}>Departure Date</span>
+                    <span className={styles.sumVal}>{formData.departure_date}</span>
+                  </div>
+                )}
+                {formData.persons && (
+                  <div className={styles.summaryRow}>
+                    <span className={styles.sumLabel}>No. of persons</span>
+                    <span className={styles.sumVal}>{formData.persons}</span>
+                  </div>
+                )}
+                {formData.children && (
+                  <div className={styles.summaryRow}>
+                    <span className={styles.sumLabel}>No. of Children</span>
+                    <span className={styles.sumVal}>{formData.children}</span>
+                  </div>
+                )}
               </div>
 
               <div className={styles.summaryFooter}>
